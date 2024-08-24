@@ -1,0 +1,60 @@
+-----------Day 1 Projects/ questions and Answers---------
+
+--Q1. Retrive all columns from the orders table.
+
+select * from orders
+
+--Q2. List the names and prices of all products from the product table.
+
+select product_name, price from products
+
+--Q3. Find orders with a sale amount grater than $100 from the order table 
+
+select * from orders
+where sale > 1000
+
+--Q4. Calculate the total numbers of customers from the customers table.
+
+Select count(customer_id) As Total_no_of_customers
+from customers
+
+--Q5. List the products in ascending order of their prices from the produtc table
+
+select * from products
+order by price  asc
+
+--Q6. Find total count of orders and total sales by each seller_id
+
+select seller_id,count(order_id),sum(sale) from orders
+group by 1
+
+--Q7. Find out total COUNT of products from products table (Hint Distinct)?
+
+select count(product_id) AS total_COUNT_of_products
+from products
+
+--Q8. Find the total count of orders and total sale for category Furniture and Technology 
+
+select count(order_id) AS total_count_of_orders ,
+sum(sale) AS total_sale from orders
+where category in ('Furniture','Technology')
+
+--Q9. Find total number of returns?
+
+select count(return_id) AS total_number_of_returns
+from returns
+
+--Q10.Find the top 5 product_id and the quantity sold and revenue generated (hint use group by and count and sum)
+
+select product_id,sum(sale) AS revenue_generated,
+count(quantity) AS quantity_sold
+from orders 
+group by 1 
+limit 5
+
+--Q11. Find top 3 states and revenue generated having revenue>30000
+
+select state, sum(sale) AS Total_sales
+from orders 
+group by 1
+having sum(sale)> 30000
